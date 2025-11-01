@@ -11,9 +11,6 @@ COPY package*.json ./
 # Install dependencies
 RUN npm ci
 
-# Copy environment file (optional, bisa skip kalau tidak ada)
-COPY .env.production .env 2>/dev/null || true
-
 # Copy semua source code
 COPY . .
 
