@@ -1,0 +1,12 @@
+.env
+.git
+.gitignore
+README.md
+*.md
+*.sql
+Article_API.postman_collection.json
+go.sum
+*.exe
+*.test
+vendor/
+

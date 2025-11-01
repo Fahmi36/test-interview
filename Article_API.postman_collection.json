@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "article-api-collection",
+		"name": "Article API",
+		"description": "Collection untuk API Article Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Create Article",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Judul artikel yang panjang minimal 20 karakter\",\n  \"content\": \"Konten artikel yang panjang minimal 200 karakter untuk memenuhi requirement validasi yang telah ditetapkan dalam spesifikasi sistem. Pastikan konten memiliki panjang yang cukup dan informatif serta memberikan value yang bermanfaat bagi pembaca.\",\n  \"category\": \"Teknologi\",\n  \"status\": \"publish\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/article/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"article",
+						""
+					]
+				},
+				"description": "Membuat article baru"
+			},
+			"response": []
+		},
+		{
+			"name": "2. Get Articles with Pagination",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/article/:limit/:offset",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"article",
+						":limit",
+						":offset"
+					],
+					"variable": [
+						{
+							"key": "limit",
+							"value": "10",
+							"description": "Jumlah data yang ingin diambil"
+						},
+						{
+							"key": "offset",
+							"value": "0",
+							"description": "Offset untuk pagination"
+						}
+					]
+				},
+				"description": "Menampilkan seluruh article di database dengan paging pada parameter limit & offset"
+			},
+			"response": []
+		},
+		{
+			"name": "3. Get Article by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/article/:id",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"article",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1",
+							"description": "ID artikel yang ingin diambil"
+						}
+					]
+				},
+				"description": "Menampilkan article dengan id yang di-request"
+			},
+			"response": []
+		},
+		{
+			"name": "4. Update Article (PUT)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Judul artikel yang diperbarui dan panjang minimal 20 karakter\",\n  \"content\": \"Konten artikel yang diperbarui minimal 200 karakter untuk memenuhi requirement validasi yang telah ditetapkan dalam spesifikasi sistem. Pastikan konten memiliki panjang yang cukup dan informatif serta memberikan value yang bermanfaat bagi pembaca.\",\n  \"category\": \"Teknologi\",\n  \"status\": \"draft\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/article/:id",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"article",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1",
+							"description": "ID artikel yang ingin diupdate"
+						}
+					]
+				},
+				"description": "Merubah data article dengan id yang di-request menggunakan method PUT"
+			},
+			"response": []
+		},
+		{
+			"name": "4. Update Article (PATCH)",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Judul artikel yang diperbarui dan panjang minimal 20 karakter\",\n  \"status\": \"publish\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/article/:id",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"article",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1",
+							"description": "ID artikel yang ingin diupdate"
+						}
+					]
+				},
+				"description": "Merubah data article dengan id yang di-request menggunakan method PATCH (partial update)"
+			},
+			"response": []
+		},
+		{
+			"name": "5. Delete Article",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/article/:id",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"article",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1",
+							"description": "ID artikel yang ingin dihapus"
+						}
+					]
+				},
+				"description": "Menghapus data article dengan id yang di request"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
+
