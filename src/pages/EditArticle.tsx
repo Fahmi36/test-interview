@@ -34,7 +34,7 @@ export default function EditArticle() {
   const [fetchLoading, setFetchLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [actionType, setActionType] = useState<'publish' | 'draft' | null>(null)
-  const autoSaveTimer = useRef<NodeJS.Timeout | null>(null)
+  const autoSaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const isSubmitting = useRef(false)
   const pendingAutoSave = useRef<Promise<void> | null>(null)
 

@@ -31,7 +31,7 @@ export default function AddNew() {
   const [loading, setLoading] = useState(false)
   const [saving, setSaving] = useState(false)
   const [actionType, setActionType] = useState<'publish' | 'draft' | null>(null)
-  const autoSaveTimer = useRef<NodeJS.Timeout | null>(null)
+  const autoSaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const isSubmitting = useRef(false)
   const pendingAutoSave = useRef<Promise<number | null> | null>(null)
 
